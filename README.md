@@ -34,7 +34,7 @@ Check out the live demo: [Exchange Insight](https://exchangeinsight.netlify.app/
 1. Clone the repository:
 
    ```bash
-   git clone [repository-url]
+   git clone https://github.com/ngNirav/exchange-insight.git
    cd exchange-insight
    ```
 
@@ -85,3 +85,11 @@ The application uses Angular's environment files for configuration. You can modi
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
+## 🧪 Testing
+
+- Unit tests have been added for the `CurrencyListTableComponent`, `DatePickerComponent` and `BaseCurrencySelectorComponent` to ensure robust input handling and dynamic rendering logic.
+- Run tests using:
+
+  ```bash
+  ng test
+  ```

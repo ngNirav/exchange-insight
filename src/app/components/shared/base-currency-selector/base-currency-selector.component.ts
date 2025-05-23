@@ -3,14 +3,17 @@ import {
   Component,
   EventEmitter,
   Input,
+  OnInit,
   Output,
   WritableSignal,
+  inject,
   input,
   signal,
 } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectModule } from '@angular/material/select';
+import { SnackbarService } from '../../../services/snackbar.service';
 
 @Component({
   selector: 'app-base-currency-selector',
@@ -18,7 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
   templateUrl: './base-currency-selector.component.html',
   styleUrl: './base-currency-selector.component.scss',
 })
-export class BaseCurrencySelectorComponent {
+export class BaseCurrencySelectorComponent implements OnInit  {
   readonly availableCurrencies = input<any>({});
   @Input() selectedCurrencies: string[] = [];
   readonly baseCurrency = input<string>('');
@@ -26,6 +29,11 @@ export class BaseCurrencySelectorComponent {
   @Output() baseChange = new EventEmitter<string>();
   selectedCurrency: WritableSignal<string> = signal('');
 
+  private readonly snackbarService = inject(SnackbarService);
+
+  ngOnInit(): void {
+    this.selectedCurrency.set(this.selectedCurrencies[this.selectedCurrencies.length - 1]);
+  }
   get currencyCodes(): string[] {
     return Object.keys(this.availableCurrencies());
   }
@@ -49,6 +57,12 @@ export class BaseCurrencySelectorComponent {
     );
     if (this.selectedCurrencies.length > 3) {
       this.selectionChange.emit(selectedCurrencies);
+    }
+  }
+
+  public promptUser(): void {
+    if (this.selectedCurrencies.length === 7) {
+      this.snackbarService.openSnackBar('You can only select 7 currencies');
     }
   }
 }

@@ -54,10 +54,7 @@ export class LayoutComponent implements OnInit {
       next: (response) => {
         this.availableCurrencies.set(response);
         this.loadHistoryExchangeData();
-      },
-      error: (error) => {
-        console.error('Error fetching available currencies:', error);
-      },
+      }
     });
   }
 
@@ -70,10 +67,7 @@ export class LayoutComponent implements OnInit {
       .subscribe({
         next: (response) => {
           this.exchangeData.set(response);
-        },
-        error: (error) => {
-          console.error('Error fetching exchange data:', error);
-        },
+        }
       });
   }
 

@@ -10,23 +10,27 @@
       }
     </mat-select>
   </mat-form-field>
-  
-  <mat-form-field>
-    <mat-label>Add Currency</mat-label>
-    <mat-select  (selectionChange)="addCurrency($event.value)"  [value]="selectedCurrency()">
-      @for (code of currencyCodes; track $index) {
-      <mat-option
-        [value]="code"
-        [disabled]="
-          selectedCurrencies.includes(code) || selectedCurrencies.length >= 7
-        "
+
+  <mat-form-field  (click)="promptUser()">
+      <mat-label>Add Currency</mat-label>
+      <mat-select
+        (selectionChange)="addCurrency($event.value)"
+        [value]="selectedCurrency()"
+        [disabled]="selectedCurrencies.length === 7"
       >
-        {{ code.toUpperCase() }}
-      </mat-option>
-      }
-    </mat-select>
+        @for (code of currencyCodes; track $index) {
+        <mat-option
+          [value]="code"
+          [disabled]="
+            selectedCurrencies.includes(code) || selectedCurrencies.length >= 7
+          "
+        >
+          {{ code.toUpperCase() }}
+        </mat-option>
+        }
+      </mat-select>
   </mat-form-field>
-  
+
   <mat-chip-set>
     @for (code of selectedCurrencies; track $index) {
     <mat-chip (removed)="removeCurrency(code)">
