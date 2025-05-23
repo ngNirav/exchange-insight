@@ -1,0 +1,40 @@
+<div class="main mt-2">
+  <mat-form-field appearance="fill" class="me-3">
+    <mat-label>Base Currency</mat-label>
+    <mat-select
+      [value]="baseCurrency()"
+      (selectionChange)="baseChange.emit($event.value)"
+    >
+      @for (code of currencyCodes; track $index) {
+      <mat-option [value]="code">{{ code.toUpperCase() }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-form-field>
+    <mat-label>Add Currency</mat-label>
+    <mat-select  (selectionChange)="addCurrency($event.value)"  [value]="selectedCurrency()">
+      @for (code of currencyCodes; track $index) {
+      <mat-option
+        [value]="code"
+        [disabled]="
+          selectedCurrencies.includes(code) || selectedCurrencies.length >= 7
+        "
+      >
+        {{ code.toUpperCase() }}
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  
+  <mat-chip-set>
+    @for (code of selectedCurrencies; track $index) {
+    <mat-chip (removed)="removeCurrency(code)">
+      {{ code.toUpperCase() }}
+      @if (selectedCurrencies.length > 3) {
+      <button matChipRemove>&times;</button>
+      }
+    </mat-chip>
+    }
+  </mat-chip-set>
+</div>

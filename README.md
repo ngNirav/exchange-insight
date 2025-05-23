@@ -1,59 +1,87 @@
-# ExchangeInsight
+# Exchange Insight 📈
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.0.6.
+A modern Angular application for tracking and comparing currency exchange rates. Built with Angular 19 and Material Design, this application provides an intuitive interface for monitoring currency exchange rates over time.
 
-## Development server
+## 🌐 Live Demo
 
-To start a local development server, run:
+Check out the live demo: [Exchange Insight](https://exchangeinsight.netlify.app/)
 
-```bash
-ng serve
+## ✨ Features
+
+- 📅 Select a date (up to 90 days in the past)
+- 🔄 View exchange rates over the last 7 days
+- 💷 Default base currency: GBP (editable)
+- 🌐 Compare against up to 7 currencies (minimum 3)
+- 📦 Fetches real-time and historical data from public API
+- 🎨 Built with Angular Material + SCSS
+
+## 🚀 Tech Stack
+
+- Angular 19
+- Angular Material
+- TypeScript
+- RxJS
+- SCSS
+- Angular Signals for State Management
+
+## 📋 Prerequisites
+
+- Node.js (Latest LTS version recommended)
+- npm (comes with Node.js)
+
+## 🛠️ Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone [repository-url]
+   cd exchange-insight
+   ```
+
+2. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+3. Start the development server:
+
+   ```bash
+   ng serve
+   ```
+
+4. Open your browser and navigate to `http://localhost:4200`
+
+## 🏗️ Project Structure
+
+```
+src/
+├── app/
+│   ├── components/
+│   │   ├── layout/            # Main layout component
+│   │   └── shared/            # Reusable components
+│   ├── models/                # TypeScript interfaces
+│   ├── services/              # API services
+│   └── utils/                 # Utility functions
+├── environments/              # Environment configurations
+└── assets/                    # Static assets
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## 💡 Usage
 
-## Code scaffolding
+1. Select a date using the date picker (up to 90 days in the past)
+2. Choose your base currency from the dropdown
+3. Add or remove comparison currencies (3-7 currencies)
+4. View the exchange rate trends in the table below
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🔧 Configuration
 
-```bash
-ng generate component component-name
-```
+The application uses Angular's environment files for configuration. You can modify the following in `src/environments/environment.ts`:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- API base URL
+- Other environment-specific settings
 
-```bash
-ng generate --help
-```
+## 🤝 Contributing
 
-## Building
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

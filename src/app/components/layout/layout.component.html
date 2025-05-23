@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">Currency Exchange Rates (Last 7 Days)</mat-toolbar>
+<div class="container mt-3">
+  <app-date-picker
+    (dateChange)="onDateChange()"
+    [(selectedDate)]="selectedDate"
+  />
+  <app-base-currency-selector
+    [availableCurrencies]="availableCurrencies()"
+    [selectedCurrencies]="selectedCurrencies()"
+    [baseCurrency]="baseCurrency()"
+    (baseChange)="onBaseCurrencyChange($event)"
+    (selectionChange)="onSelectedCurrenciesChange($event)"
+  />
+  @defer {
+  <app-currency-list-table
+    [currencyExchangData]="exchangeData()"
+    [selectedCurrencies]="selectedCurrencies()"
+  />
+  } @placeholder {
+  <div class="loader">
+    <mat-spinner></mat-spinner>
+  </div>
+  }
+</div>
